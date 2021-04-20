@@ -76,8 +76,9 @@ public:
     double ksi;
     if (lower != upper) {
       Implicit_fn<glm_model> implicit_fn(model, at_avg, data_pt, theta_old, normx);
+      uintmax_t maxit = 1000;
       ksi = boost::math::tools::schroeder_iterate(implicit_fn, (lower +
-        upper)/2, lower, upper, delta_);
+        upper)/2, lower, upper, delta_, maxit);
     } else {
       ksi = lower;
     }
@@ -107,8 +108,9 @@ public:
     double ksi;
     if (lower != upper) {
       Implicit_fn<m_model> implicit_fn(model, at_avg, data_pt, theta_old, normx);
+      uintmax_t maxit = 1000;
       ksi = boost::math::tools::schroeder_iterate(implicit_fn, (lower +
-        upper)/2, lower, upper, delta_);
+        upper)/2, lower, upper, delta_, maxit);
     } else {
       ksi = lower;
     }
